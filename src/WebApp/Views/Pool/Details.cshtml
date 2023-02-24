@@ -1,0 +1,413 @@
+﻿@using System.Globalization
+@using CommonMark
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@using WebApp.Extensions
+@using WebApp.Resources
+@using Microsoft.Extensions.Options;
+@using WebApp.Utils
+@model WebApp.Models.PoolDetailsModel
+@using Schema.NET
+@using WebApp
+@using WebApp.Models
+
+@inject JsonSerializerSettings jsonSerializerSettings
+@inject IOptions<AppConfig> appConfig
+@inject ICompositeViewEngine viewEngine
+
+@{
+    Layout = "_Layout";
+
+    var pool = Model.Pool;
+    var poolName = !string.IsNullOrEmpty(Model.Pool.Coin.CanonicalName) ? $"{Model.Pool.Coin.CanonicalName}" : Model.Pool.Coin.Name;
+
+    var ambientData = (AmbientData)ViewData["Ambient"];
+
+    var us = new Organization
+    {
+        Name = Strings.OpenGraphAppName,
+        Url = new Uri(Url.AbsoluteContent(Url.Action("Index", "Pool", new { culture = Context.GetRouteData().Values["culture"]})))
+    };
+
+    var icon = new Uri(Url.AbsoluteContent("/img/logo.png"));
+
+    var schemaData = new WebPage
+    {
+        Name = ambientData.PageTitle + " - " + Strings.OpenGraphAppName,
+        Headline = ambientData.PageTitle,
+        Description = ambientData.PageDescription,
+        CopyrightYear = DateTime.Now.Year,
+        InLanguage = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName,
+        Genre = "Crypto Currency Mining Pool",
+        Image = icon,
+        Creator = us,
+        Publisher = us,
+        Author = us,
+        ThumbnailUrl = icon,
+    };
+}
+
+@section head {
+    <meta name="og:image" content="@icon.ToString()" />
+
+    <script type="application/ld+json">@Html.Raw(schemaData.ToHtmlEscapedString())</script>
+}
+
+@section Scripts {
+    <script>
+        var modelInit = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.None, jsonSerializerSettings));
+        var minerDownloads = @Html.Raw(JsonConvert.SerializeObject(appConfig.Value.Miners, Formatting.None, jsonSerializerSettings));
+    </script>
+
+    <script src="~/build/pool.js" asp-append-version="true"></script>
+}
+
+@section FooterExtra {
+    @if (Model.OtherPools?.Length > 0)
+    {
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="col-lg-3 d-none d-lg-block">
+                <ul class="nav flex-column">
+                    @foreach (var pool2 in Model.OtherPools.Skip(i * 3).Take(3))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Pool" asp-action="Details" asp-route-id="@pool2.Id">
+                                <img alt="@pool2.Coin.Type.ToUpper()" class="cointype footer" src="/img/coins/@(pool2.Coin.Type.ToLower()).png" /> @(pool2.Coin.CanonicalName ?? pool2.Coin.Name)@(FormatUtil.IsMultiAlgoCoin(pool2.Coin.Type) ? " (" + pool2.Coin.GetAlgorithmName() + ")" : "")
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+}
+
+<section class="pool" id="app">
+    <div class="container content">
+        <div class="row">
+            <div class="col-lg-6">
+                <a class="pool-title" href="@(Url.RouteUrl(Context.GetRouteData().Values))">
+                    <img alt="@(pool.Coin.Type.ToUpper())" class="cointype" src="/img/coins/@(pool.Coin.Type.ToLower()).png"/>
+                    <div>
+                        <h1 title="@poolName @Strings.MiningPool (@pool.Coin.Type)">@poolName @Strings.MiningPool@(pool.IsSoloPool() ? " (" + Strings.SoloPool + ")" : string.Empty)</h1>
+                        @if (FormatUtil.IsMultiAlgoCoin(pool.Coin.Type))
+                        {
+                            <h2 class="text-subtle">@pool.Coin.GetAlgorithmName()</h2>
+                        }
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-6 d-none d-lg-block text-right">
+                <table class="pool-mini-info">
+                    <tr>
+                        @if (Model.Ticker != null)
+                        {
+                            <td>
+                                <div class="pool-mini-info quote">
+                                    @{ var quote = Model.Ticker.Quotes["USD"]; }
+                                    <h6>
+                                        @Model.Pool.Coin.Type-USD
+
+                                        @if (quote.PercentChange24h > 0)
+                                        {
+                                            <i class="fa trend up fa-chevron-circle-up" data-toggle="tooltip" data-placement="top" title="@Strings.QuoteUp24h"></i>
+                                        }
+
+                                        else
+                                        {
+                                            <i class="fa trend down fa-chevron-circle-down" data-toggle="tooltip" data-placement="top" title="@Strings.QuoteDown24h"></i>
+                                        }
+                                    </h6>
+                                    <h1 data-toggle="tooltip" data-placement="bottom" title="$@quote.Price">$@(quote.Price >= 10 ? quote.Price.ToString("N3") : quote.Price.ToString("N5"))</h1>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="pool-mini-info quote">
+                                    @{ quote = Model.Ticker.Quotes["EUR"]; }
+                                    <h6>
+                                        @Model.Pool.Coin.Type-EUR
+
+                                        @if (quote.PercentChange24h > 0)
+                                        {
+                                            <i class="fa trend up fa-chevron-circle-up" data-toggle="tooltip" data-placement="top" title="@Strings.QuoteUp24h"></i>
+                                        }
+
+                                        else
+                                        {
+                                            <i class="fa trend down fa-chevron-circle-down" data-toggle="tooltip" data-placement="top" title="@Strings.QuoteDown24h"></i>
+                                        }
+                                    </h6>
+                                    <h1  data-toggle="tooltip" data-placement="bottom" title="€@quote.Price">€@(quote.Price >= 10 ? quote.Price.ToString("N3") : quote.Price.ToString("N5"))</h1>
+                                </div>
+                            </td>
+                        }
+                        @if (Model.TotalPaid > 0)
+                        {
+                            <td>
+                                <div class="pool-mini-info">
+                                    <h6>@(Strings.MinerEarnings2)</h6>
+                                    <h1 data-toggle="tooltip" data-placement="bottom" title="@Model.TotalPaid">@Model.TotalPaid.ToString("N2") @(pool.Coin.Type.ToUpper())</h1>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.AnnouncementMarkdown))
+        {
+            <div class="row inset hashrate">
+                <div class="col-lg-12">
+                    <blockquote class="announcement">@Html.Raw(CommonMarkConverter.Convert(Model.AnnouncementMarkdown))</blockquote>
+                </div>
+            </div>
+        }
+
+        <div class="row inset hashrate">
+            <div class="col-lg-6">
+                <pool-hashrate-chart></pool-hashrate-chart>
+            </div>
+            <div class="col-lg-6">
+                <pool-network-diff-chart></pool-network-diff-chart>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-8 order-2 order-lg-1">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link @(Model.MinerStats == null ? "active" : "")" href="#pool-help" role="tab" data-toggle="tab">@Strings.PoolHelp</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(Model.MinerStats != null ? "active" : "")" href="#pool-blocks" role="tab" data-toggle="tab">@Strings.PoolBlocks</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pool-payments" role="tab" data-toggle="tab">@Strings.PoolPayments</a>
+                    </li>
+
+                    @if (Model.Pool.TopMiners is {Count: > 0 })
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pool-miners" role="tab" data-toggle="tab">@Strings.PoolMiners</a>
+                        </li>
+                    }
+                </ul>
+
+                @{
+                    var partialName = !FormatUtil.IsMultiAlgoCoin(Model.Pool.Coin.Type) ?
+                        $"{Model.Pool.Coin.Type.ToLower()}-{CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLower()}" :
+                        $"{Model.Pool.Coin.Type.ToLower()}-{Model.Pool.Coin.Algorithm.ToLower()}-{CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLower()}";
+
+                    if (!viewEngine.FindView(ViewContext, "Help/" + partialName, isMainPage: false).Success)
+                        partialName = !FormatUtil.IsMultiAlgoCoin(Model.Pool.Coin.Type) ?
+                            $"{Model.Pool.Coin.Type.ToLower()}" :
+                            $"{Model.Pool.Coin.Type.ToLower()}-{Model.Pool.Coin.Algorithm.ToLower()}";
+
+                }
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane @(Model.MinerStats == null ? "show active" : "")" id="pool-help">
+                        <form class="miner-details-form" method="post" asp-route="poolMinerDetailsForm">
+                            <input type="hidden" name="pool" value="@Model.PoolId"/>
+                            <input type="hidden" name="culture" value="@Context.GetRouteData().Values["culture"]"/>
+
+                            <div class="input-group">
+                                <input class="form-control form-control-sm" placeholder="@Strings.WatermarkWalletAddress" type="text" name="account">
+
+                                <div class="input-group-append">
+                                    <input type="submit" class="btn btn-sm btn-primary" value="@Strings.Search"/>
+                                </div>
+                            </div>
+                        </form>
+
+                        @await Html.PartialAsync("Help/" + partialName, Model, null)
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane @(Model.MinerStats != null ? "show active" : "")" id="pool-blocks">
+                        <pool-block-list></pool-block-list>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="pool-payments">
+                        <pool-payment-list></pool-payment-list>
+                    </div>
+
+                    @if (Model.Pool.TopMiners is {Count: > 0 })
+                    {
+                        <div role="tabpanel" class="tab-pane" id="pool-miners">
+                            <table class="table miner-workers table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="worker">Miner</th>
+                                        <th class="hashrate">Hashrate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Pool.TopMiners)
+                                    {
+                                        <tr>
+                                            <td class="worker">
+                                                <a target="_blank" asp-controller="Pool" asp-action="MinerDetails" asp-route-id="@pool.Id" asp-route-account="@item.Miner">@item.Miner</a>
+                                            </td>
+                                            <td class="hashrate">@FormatUtil.FormatHashrate(item.Hashrate, pool.Coin.Type)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-4 order-1 order-lg-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link @(Model.MinerStats == null ? "active" : "")" href="#pool-stats" role="tab" data-toggle="tab">@Strings.PoolStats</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(Model.MinerStats != null ? "active" : "")" href="#my-stats" role="tab" data-toggle="tab">@Strings.MyStats</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane @(Model.MinerStats == null ? "show active" : "")" id="pool-stats">
+                        <table class="table pool-stats">
+                            <tbody>
+                                <tr>
+                                    <td>@Strings.WorkerCount</td>
+                                    <td>@pool.PoolStats?.ConnectedMiners</td>
+                                </tr>
+                                <tr>
+                                    <td>@Strings.PoolHashrate</td>
+                                    <td>@FormatUtil.FormatHashrate(pool.PoolStats?.PoolHashrate, pool.Coin.Type)</td>
+                                </tr>
+                                @if (pool.NetworkStats?.NetworkHashrate > 0.01)
+                                {
+                                    <tr>
+                                        <td>@Strings.NetworkHashrate</td>
+                                        <td><span data-toggle="tooltip" data-placement="top" title="@pool.NetworkStats?.NetworkHashrate">@FormatUtil.FormatHashrate(pool.NetworkStats.NetworkHashrate, pool.Coin.Type)</span></td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>@Strings.NetworkDifficulty</td>
+                                    <td><span data-toggle="tooltip" data-placement="top" title="@pool.NetworkStats?.NetworkDifficulty">@FormatUtil.FormatDifficulty(pool.NetworkStats?.NetworkDifficulty)</span></td>
+                                </tr>
+                                @if (!string.IsNullOrEmpty(pool.Coin.GetAlgorithmName()))
+                                {
+                                    <tr>
+                                        <td>@Strings.PowAlgo</td>
+                                        <td>@(pool.Coin.GetAlgorithmName().Capitalize())</td>
+                                    </tr>
+                                }
+                                @if (Model.BlockEffortAverage.HasValue)
+                                {
+                                    <tr>
+                                        <td>@Strings.PoolBlockEffort <span data-toggle="tooltip" data-placement="top" title="@Strings.PoolBlockEffortTooltip"><i class="fa fa-info-circle dimmed" aria-hidden="true"></i></span></td>
+                                        <td class="effort @(Model.BlockEffortAverage.Value <= 1.2 ? "low" : "") @(Model.BlockEffortAverage.Value > 1.2 ? "medium" : "") @(Model.BlockEffortAverage.Value > 1.5 ? "high" : "")">
+                                            @(Math.Floor(Model.BlockEffortAverage.Value * 100))%
+                                        </td>
+                                    </tr>
+                                }
+                                @if (pool.Ports.Keys.Any())
+                                {
+                                    <tr>
+                                        <td>@Strings.StratumPortAndDifficulty</td>
+                                        <td class="ports">
+                                            @foreach (var port in pool.Ports.Keys)
+                                            {
+                                                if (pool.Ports[port].VarDiff != null)
+                                                {
+                                                    <div class="port-info">
+                                                        <abbr title="@Strings.VarDiff" data-toggle="tooltip" data-placement="top"><i class="fa fa-chart-area"></i></abbr>
+
+                                                        @if (!string.IsNullOrEmpty(pool.Ports[port].Name))
+                                                        {
+                                                            <abbr title="@(pool.Ports[port].Name)" data-toggle="tooltip" data-placement="top">@(pool.Ports[port].Difficulty)</abbr>
+                                                        }
+
+                                                        else
+                                                        {
+                                                            @(pool.Ports[port].Difficulty)
+                                                        }
+
+                                                        <i class="fa fa-long-arrow-alt-right"></i> @port
+                                                    </div>
+                                                }
+
+                                                else
+                                                {
+                                                    <div class="port-info">
+                                                        @if (!string.IsNullOrEmpty(pool.Ports[port].Name))
+                                                        {
+                                                            <abbr title="@(pool.Ports[port].Name)" data-toggle="tooltip" data-placement="top">@(pool.Ports[port].Difficulty)</abbr>
+                                                        }
+
+                                                        else
+                                                        {
+                                                            @(pool.Ports[port].Difficulty)
+                                                        }
+
+                                                        <i class="fa fa-long-arrow-alt-right"></i> @port
+                                                    </div>
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>@Strings.PayoutScheme</td>
+
+                                    @if (pool.PaymentProcessing.PayoutScheme.ToString().ToUpper() == "PPLNS")
+                                    {
+                                        <td><a asp-controller="Pool" asp-action="Faq" asp-fragment="payments">@pool.PaymentProcessing.PayoutScheme.ToString().ToUpper()</a></td>
+                                    }
+
+                                    else
+                                    {
+                                        <td>@pool.PaymentProcessing.PayoutScheme.ToString().ToUpper()</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td>@Strings.PoolFee</td>
+                                    <td>@(pool.PoolFeePercent.ToString("0.##"))%</td>
+                                </tr>
+                                @if (pool.PaymentProcessing?.MinimumPayment > 0)
+                                {
+                                    <tr>
+                                        <td>@Strings.MinPayout <i class="fa fa-cog dimmed" aria-hidden="true" :title="$t('myStats.lblChangeMinimumPaymentMsg')" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}"></i></td>
+                                        <td>@pool.PaymentProcessing.MinimumPayment.ToString() @pool.Coin.Type.ToUpper()</td>
+                                    </tr>
+                                }
+                                @if (!string.IsNullOrEmpty(pool.Address) && pool.Coin.Family != "cryptonote")
+                                {
+                                    <tr class="pool-wallet">
+                                        <td>@Strings.PoolWallet</td>
+
+                                        @if (!string.IsNullOrEmpty(pool.AddressInfoLink))
+                                        {
+                                            <td class="wallet-address-column"><span data-toggle="tooltip" data-placement="left" title="@pool.Address"><a id="pool-wallet" target="_blank" href="@pool.AddressInfoLink">@pool.Address</a></span></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="wallet-address-column"><span data-toggle="tooltip" data-placement="left" title="@pool.Address">@pool.Address</span></td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane @(Model.MinerStats != null ? "show active" : "")" id="my-stats">
+                        <miner-stats></miner-stats>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

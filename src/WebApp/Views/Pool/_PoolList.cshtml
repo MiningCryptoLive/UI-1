@@ -1,0 +1,39 @@
+﻿@using Miningcore
+@using WebApp.Resources
+@using WebApp.Utils
+@using WebApp.Extensions
+@model WebApp.Models.PoolIndexModel
+
+@{
+var pools = (IList<PoolInfo>) ViewData["Pools"];
+}
+
+<table class="table table-striped pools-list">
+    <thead>
+        <tr>
+            <th class="coin">@Strings.MiningPoolShort</th>
+            <th class="pool-hashrate">@Strings.PoolListPoolHashrate</th>
+            <th class="network-hashrate">@Strings.PoolListNetworkHashrate</th>
+            <th class="payment-scheme">@Strings.PayoutScheme</th>
+            <th class="fee">@Strings.PoolListFee</th>
+            <th class="go"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pool in pools)
+        {
+            <tr>
+                <td class="coin">
+                    <a class="details-link" asp-controller="Pool" asp-action="Details" asp-route-id="@pool.Id">
+                        <span><img alt="@pool.Coin.Type.ToUpper()" class="cointype" src="/img/coins/@(pool.Coin.Type.ToLower()).png" />@(pool.Coin.CanonicalName ?? pool.Coin.Name)@(FormatUtil.IsMultiAlgoCoin(pool.Coin.Type) ? " (" + pool.Coin.GetAlgorithmName() + ")" : "")@(pool.IsSoloPool() ? $" ({Strings.SoloPool})" : string.Empty)</span>
+                    </a>
+                </td>
+                <td class="pool-hashrate">@FormatUtil.FormatHashrate(pool.PoolStats?.PoolHashrate, pool.Coin.Type)</td>
+                <td class="network-hashrate">@FormatUtil.FormatHashrate(pool.NetworkStats?.NetworkHashrate, pool.Coin.Type)</td>
+                <td class="payment-scheme"><a asp-controller="Pool" asp-action="Faq" asp-fragment="@(pool.PaymentProcessing.PayoutScheme.ToLower() == "pplns" ? "payments" : "solo-mining")">@pool.PaymentProcessing.PayoutScheme</a></td>
+                <td class="fee">@(pool.PoolFeePercent.ToString("0.##"))%</td>
+                <td class="go"><a class="btn btn-sm btn-success uppercase download-button" asp-controller="Pool" asp-action="Details" asp-route-id="@pool.Id">@Html.Raw(Strings.PoolListMineButton)</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

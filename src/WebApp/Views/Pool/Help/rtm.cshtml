@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Routing
+@model WebApp.Models.PoolDetailsModel
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/wildrig-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", Model.Pool.Coin.Website },
+    { "WildrigMinerAlgo", "ghostrider" },
+    { "WalletRegex", "^R.+" },
+})

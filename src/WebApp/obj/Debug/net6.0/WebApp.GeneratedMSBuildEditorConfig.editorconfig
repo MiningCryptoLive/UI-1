@@ -1,0 +1,220 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApp
+build_property.RootNamespace = WebApp
+build_property.ProjectDir = G:\Miningcore.UI_1\src\WebApp\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = G:\Miningcore.UI_1\src\WebApp
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Faq.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxGYXEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/autolykos-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGF1dG9seWtvcy1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/cryptodredge-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGNyeXB0b2RyZWRnZS1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/cryptonight-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGNyeXB0b25pZ2h0LWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/equihash-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGVxdWloYXNoLWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/equihash-personalized-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGVxdWloYXNoLXBlcnNvbmFsaXplZC1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/ethash-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGV0aGFzaC1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/generic-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXGdlbmVyaWMtZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/trex-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXHRyZXgtZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/wildrig-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXHdpbGRyaWctZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/algos/_wallet-base-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGFsZ29zXF93YWxsZXQtYmFzZS1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/bcd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGJjZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/bch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/btc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGJ0Yy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/btg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGJ0Zy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/dash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRhc2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/dgb-qubit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRnYi1xdWJpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/dgb-scrypt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRnYi1zY3J5cHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/dgb-sha256d.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRnYi1zaGEyNTZkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/dgb-skein.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRnYi1za2Vpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/doge.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGRvZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/erg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGVyZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/eth-wallet-extra-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGV0aC13YWxsZXQtZXh0cmEtZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/eth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGV0aC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/flo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGZsby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/kda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGtkYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/ltc-wallet-extra-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGx0Yy13YWxsZXQtZXh0cmEtZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/ltc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXGx0Yy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/mona.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXG1vbmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/rtm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHJ0bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/stratums.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHN0cmF0dW1zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/vtc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHZ0Yy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xec.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHhlYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xmr-wallet-extra-en.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHhtci13YWxsZXQtZXh0cmEtZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xmr.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHhtci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xvg-blake2s.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHh2Zy1ibGFrZTJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xvg-groestlmyriad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHh2Zy1ncm9lc3RsbXlyaWFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xvg-lyra2rev2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHh2Zy1seXJhMnJldjIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xvg-scrypt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHh2Zy1zY3J5cHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/xvg-x17.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHh2Zy14MTcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Help/zec.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxIZWxwXHplYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/Live.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxMaXZlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/MinerDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxNaW5lckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Pool/_PoolList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9vbFxfUG9vbExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Miningcore.UI_1/src/WebApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

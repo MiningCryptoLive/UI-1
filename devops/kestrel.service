@@ -1,0 +1,16 @@
+[Unit]
+Description=Kestrel
+After=network.target
+
+[Service]
+
+Environment="DOTNET_ENVIRONMENT=Production"
+WorkingDirectory=/home/raven/ui/src/publish
+ExecStart=/home/raven/ui/src/publish/WebApp
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

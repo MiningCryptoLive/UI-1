@@ -1,0 +1,66 @@
+﻿@using System.Linq
+@using CommonMark
+@using Microsoft.Extensions.Options
+@using WebApp
+@using WebApp.Resources
+@using WebApp.Utils
+@model WebApp.Models.PoolDetailsModel
+@inject IOptions<AppConfig> appConfig
+
+<div id="stratums">
+    <h3><i class="fa fa-sitemap" aria-hidden="true"></i> @Strings.StratumPorts</h3>
+
+    <table class="table stratums">
+        <thead>
+            <tr>
+                <th class="url">@Strings.StratumAddress</th>
+                <th class="info">@Strings.StratumStartingDiff</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var port in Model.Pool.Ports.Keys)
+            {
+                var portInfo = Model.Pool.Ports[port];
+
+                if (appConfig?.Value?.StratumHosts != null)
+                {
+                    foreach (var host in appConfig.Value.StratumHosts)
+                    {
+                        <tr>
+                            <td class="url">@host.@appConfig.Value.PoolDomain:@port</td>
+                            <td class="info">
+                                @if (portInfo.VarDiff != null)
+                                {
+                                    <i class="fa fa-line-chart" title="@Strings.VarDiff" data-toggle="tooltip" data-placement="top" aria-hidden="true"></i>
+                                }
+                                @FormatUtil.FormatDifficulty(portInfo.Difficulty)
+                            </td>
+                        </tr>
+                    }
+                }
+
+                else
+                {
+                    <tr>
+                        <td class="url">@appConfig.Value.PoolDomain:@port</td>
+                        <td class="info">
+                            @if (portInfo.VarDiff != null)
+                            {
+                                <i class="fa fa-line-chart" title="@Strings.VarDiff" data-toggle="tooltip" data-placement="top" aria-hidden="true"></i>
+                            }
+                            @FormatUtil.FormatDifficulty(portInfo.Difficulty)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <p>@Html.Raw(CommonMarkConverter.Convert(Strings.StratumFeatures))</p>
+    <p>@Html.Raw(CommonMarkConverter.Convert(Strings.StratumLogin))</p>
+    <p>@Html.Raw(CommonMarkConverter.Convert(Strings.StratumStaticDifficulty))</p>
+    <p>@Html.Raw(CommonMarkConverter.Convert(Strings.StratumNicehash))</p>
+    @if (ViewData.ContainsKey("ExtraContent"))
+    {
+        <p>@Html.Raw(ViewData["ExtraContent"])</p>
+    }
+</div>

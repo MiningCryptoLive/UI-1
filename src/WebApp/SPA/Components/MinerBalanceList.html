@@ -1,0 +1,33 @@
+﻿<div>
+    <table class="table pool-balance-changes table-striped">
+        <thead>
+            <tr>
+                <th class="timestamp">{{ $t('common.lblChanged') }}</th>
+                <th class="amount">{{ $t('common.lblAmount') }} ({{ currency }})</th>
+                <th class="usage">{{ $t('common.lblUsage') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in changes">
+                <td class="timestamp" :title=item.created.local() v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{item.created | momentAgo}}</td>
+                <td class="amount">{{item.amount | currency(4, true)}}</td>
+                <td class="usage" :title="item.usage" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{item.usage}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div v-if="isBusy" class="spinner-container flex-items-xs-middle">
+        <div class="col-sm-12">
+            <spinner title="Loading ..."></spinner>
+        </div>
+    </div>
+
+    <div v-if="!changes.length" class="text-xs-center">
+        <h2 class="no-data">No Results</h2>
+    </div>
+
+    <div v-if="pageCount > 1 && (currentPage > 0 || changes.length > 0)" class="mini-pager">
+        <button class="btn btn-sm btn-outline-primary" @click="onPagePrev" :disabled="currentPage === 0"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-outline-primary" @click="onPageNext" :disabled="currentPage === pageCount"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+</div>

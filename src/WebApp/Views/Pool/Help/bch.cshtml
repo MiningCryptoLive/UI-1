@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Routing
+@using CommonMark
+@using WebApp.Resources
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/generic-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://www.bitcoincash.org/" },
+    { "Antminer", "S9" },
+    { "ExtraContent", CommonMarkConverter.Convert(Strings.RollingVersionAsicBoost) },
+})

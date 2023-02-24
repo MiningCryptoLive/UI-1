@@ -1,0 +1,108 @@
+<div>
+    <div v-if="isBusy">
+        <div class="spinner-container">
+            <br/>
+            <spinner :title="$t('common.loadingSpinner')" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}"></spinner>
+        </div>
+    </div>
+
+    <div v-if="!isBusy">
+        <div v-if="hasMiner && stats">
+            <table class="table pool-stats">
+                <tbody>
+                <tr class="hashrate">
+                    <td>{{ $t('myStats.lblHashrate') }} <i class="fa fa-info-circle dimmed" aria-hidden="true" :title="$t('myStats.lblHashrateTooltip')" v-bs-tooltip="{ placement: 'top', delay: { show: 300 }}"></i></td>
+                    <td>{{ formatHashrate(totalHashrate) }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ $t('myStats.lblPendingShares') }} <i class="fa fa-info-circle dimmed" aria-hidden="true" :title="$t('myStats.lblSharesTooltip')" v-bs-tooltip="{ placement: 'top', delay: { show: 300 }}"></i></td>
+                    <td :title=stats.pendingShares v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{ stats.pendingShares | quantity(3) }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ $t('myStats.lblPendingBalance') }}</td>
+                    <td>{{ stats.pendingBalance | currency(4) }} {{ poolCurrency }}</td>
+                </tr>
+
+                <tr>
+                  <td>{{ $t('myStats.lblMinimumPayment') }} <i class="fa fa-info-circle dimmed" aria-hidden="true" :title="$t('myStats.lblMinimumPaymentTooltip')" v-bs-tooltip="{ placement: 'top', delay: { show: 100 }}"></i></td>
+                  <td><button class="btn btn-small btn-outline-primary edit-button" @click="onChangeMinimumPayout"><i class="fa fa-cog" aria-hidden="true"></i></button> {{ (settings.paymentThreshold || poolMinimumPayment ) | currency(4) }} {{ poolCurrency }}</td>
+                </tr>
+
+                <tr>
+                    <td>{{ $t('myStats.lblTotalPaid') }}</td>
+                    <td>{{ stats.totalPaid | currency(4) }} {{ poolCurrency }}</td>
+                </tr>
+
+                <tr v-if="stats.lastPayment">
+                    <td>{{ $t('myStats.lblLastPayment') }}</td>
+                    <td :title=stats.lastPayment.local() v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}"><a target="_blank"
+                        :href="stats.lastPaymentLink">{{stats.lastPayment | momentAgo}}</a></td>
+                </tr>
+
+                <tr>
+                    <td>{{ $t('common.lblLastUpdate') }}</td>
+                    <td :title=lastUpdate.local() v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{lastUpdate | momentAgo}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align: right;"><a :href="dashboardUrl" target="_blank">{{ $t('myStats.lblFullDashboard') }}</a>&nbsp;<i style="font-size: 80%;" class="fa fa-external-link" aria-hidden="true"></i></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="workers" v-if="hasMiner && hasWorkers">
+            <h6>Workers</h6>
+
+            <table class="table worker-stats">
+                <tbody>
+                <tr v-for="worker in workerNames.filter(function(x) { return x != null && x != ''; })">
+                    <td class="worker">{{ worker }}</td>
+                    <td class="hashrate">{{ formatHashrate(stats.performance.workers[worker].hashrate) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="input-group wallet-form" style="width: 100%">
+            <input class="form-control form-control-sm" :disabled="isBusy" type="text" id="miner" :placeholder="$t('myStats.watermarkWalletAddress')" v-model="minerAddress" />
+
+            <div class="input-group-append">
+              <button type="button" class="btn btn-sm btn-primary" :disabled="isBusy" @click="onStartTracking">{{ $t('common.btnLoad') }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="miner-settings" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ $t('myStats.lblPreferences') }}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>{{ $t('common.lblAccount')}}</label>
+              <input type="text" class="form-control" v-model="minerAddress" readonly>
+            </div>
+            <div class="form-group">
+              <label>{{ $t('myStats.lblRecentlyUsedIpAddress')}}</label>
+              <input type="text" class="form-control ipAddress" v-model="settingsIpAddress" :placeholder="$t('common.lblIpAddress')" @input="validateSettings">
+            </div>
+            <div class="form-group">
+              <label>{{ $t('myStats.lblPaymentThreshold')}}</label>
+              <input type="number" class="form-control" v-model="settingsPaymentLimit" :placeholder="$t('myStats.lblPaymentThreshold')" @input="validateSettings">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ $t('common.btnCancel') }}</button>
+            <button type="button" style="min-width: 6rem;" :disabled="!settingsValid" class="btn btn-primary" @click="onSaveSettings">{{ $t('common.btnSave') }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+﻿@using System
+@using System.Globalization
+@using System.Linq
+@using System.Net
+@using WebApp.Models
+@using WebApp.Utils
+@using WebApp
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Routing
+@using Microsoft.Extensions.Options
+@using Schema.NET
+@using WebApp.Extensions
+@using WebApp.Resources
+
+@inject IOptions<AppConfig> appConfig
+@model PoolIndexModel
+
+@{
+    ViewData["NavBarClass"] = "fixed-top navbar-dark hero";
+    ViewData["BodyClass"] = "hero";
+
+    var cookieTheme = Context.Request.Cookies[AppConstants.ThemeCookieName];
+    if (cookieTheme != "light" && cookieTheme != "dark")
+        cookieTheme = null;
+
+    var us = new Organization
+    {
+        Name = Strings.OpenGraphAppName,
+        Url = new Uri(Url.AbsoluteContent(Url.Action("Index", "Pool", new { culture = Context.GetRouteData().Values["culture"]})))
+    };
+
+    var icon = new Uri(Url.AbsoluteContent("/img/logo.png"));
+
+    var schemaData = new WebSite
+    {
+        Name = Strings.OpenGraphAppName,
+        Headline = Strings.OpenGraphAppTitle,
+        Description = Strings.OpenGraphAppDescription,
+        CopyrightYear = DateTime.Now.Year,
+        InLanguage = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName,
+        Genre = "Crypto Currency Mining",
+        Image = icon,
+        Creator = us,
+        Publisher = us,
+        Author = us,
+        ThumbnailUrl = icon,
+    };
+}
+
+@section head
+{
+    <meta property="og:image" content="@Url.AbsoluteContent("/img/logo.png")" />
+
+    <script type="application/ld+json">@Html.Raw(schemaData.ToHtmlEscapedString())</script>
+}
+
+@section navextra
+    {
+    @if (Model.Pools != null)
+    {
+        foreach (var pool in Model.Pools.Pools)
+        {
+            <li class="nav-item d-lg-none d-md-none">
+                <a class="nav-link" asp-controller="Pool" asp-action="Details" asp-route-id="@pool.Coin.Type.ToLower()">
+                    @pool.Coin.Name@(FormatUtil.IsMultiAlgoCoin(pool.Coin.Type) ? " (" + pool.Coin.GetAlgorithmName() + ")" : "")
+                </a>
+            </li>
+        }
+    }
+}
+
+<section class="hero">
+    <div class="container">
+        <div class="content row align-items-end">
+            <div class="col-sm-12 col-lg-7">
+                <div class="wrap">
+                    <h1>@Strings.WelcomeH1Fmt</h1>
+                    <h2>@(Html.Raw(Strings.WelcomeH2_1))</h2>
+                    <a class="btn btn-success uppercase download-button" asp-controller="Pool" asp-action="Faq">FAQ</a>&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div class="col-lg-5 d-none d-lg-block screenshot-montage"></div>
+        </div>
+    </div>
+</section>
+
+<section class="pools">
+    <div class="container content">
+        @if (Model.Pools != null)
+        {
+            <div class="row">
+                <div class="col-lg-9">
+                    @await Html.PartialAsync("_PoolList", Model, new ViewDataDictionary(ViewData)
+                    {
+                        { "Pools", Model.Pools.Pools }
+                    })
+                </div>
+
+                <div id="twitter-column" class="col-lg-3">
+                    @if (!string.IsNullOrEmpty(appConfig.Value.TwitterUrl))
+                    {
+                        <a class="twitter-timeline" @Html.Raw(cookieTheme == "dark" ? "data-theme=\"dark\"" : string.Empty)
+                           data-chrome="transparent nofooter noborders noheader noscrollbar" data-dnt="true" data-height="100%" href="@appConfig.Value.TwitterUrl">Recent Tweets</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>

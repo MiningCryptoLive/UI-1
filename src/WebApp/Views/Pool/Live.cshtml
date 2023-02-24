@@ -1,0 +1,39 @@
+﻿@using System.Globalization
+@using System.Net
+@using CommonMark
+@using Microsoft.AspNetCore.Http.Extensions
+@using WebApp.Resources
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@using WebApp.Extensions
+@model WebApp.Models.LiveDashboardModel
+
+@inject JsonSerializerSettings jsonSerializerSettings
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+@section head {
+    <meta name="og:image" content="@Url.AbsoluteContent("/img/logo.png")" />
+}
+
+@section Scripts {
+    <script>
+        var modelInit = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.None, jsonSerializerSettings));
+    </script>
+
+    <script src="~/build/live-dashboard.js" asp-append-version="true"></script>
+}
+
+<section class="live-blocks" id="app">
+    <div class="container content">
+        <div class="row">
+            <div class="col-lg-12">
+                <live-dashboard></live-dashboard>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+﻿@model WebApp.Models.PoolDetailsModel
+
+@{
+    var coinName = ((string)ViewData["Coinname"]) ?? Model.Pool.Coin.Name;
+    var coinSymbol = Model.Pool.Coin.Type.ToLower();
+    var officialWalletUrl = (string) ViewData["OfficialWalletUrl"];
+    var walletExtraPartial = (string) ViewData["WalletExtraPartial"];
+}
+
+<div id="wallet-setup">
+<markdown>
+### <i class="fa fa-credit-card" aria-hidden="true"></i> Getting a Wallet
+
+Before you can start to mine you need to create a wallet. Although @(coinName) is an entirely digital asset, you still need a place to store them. This is done in a digital wallet. There are multiple methods to obtain a wallet which vary by ease of use and the security they provide.
+
+#### Official Wallets
+
+Official first-party Wallets for all major platforms are available from the [@(coinName) Website](@officialWalletUrl). These wallets are released and maintained by the @(coinName) Team.
+
+@if (!string.IsNullOrEmpty(walletExtraPartial))
+{
+    @await Html.PartialAsync(walletExtraPartial, Model)
+}
+</markdown>
+</div>

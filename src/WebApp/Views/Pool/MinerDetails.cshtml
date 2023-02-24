@@ -1,0 +1,55 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@using WebApp.Extensions
+@using WebApp.Utils
+@model WebApp.Models.MinerDetailsModel
+@using Microsoft.Extensions.Options;
+@using WebApp
+
+@inject IOptions<AppConfig> appConfig
+@inject JsonSerializerSettings jsonSerializerSettings
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+@section head {
+    <meta name="og:image" content="@Url.AbsoluteContent("/img/logo.png")" />
+}
+
+@section Scripts {
+    <script>
+        var modelInit = @Html.Raw(JsonConvert.SerializeObject(Model, Formatting.None, jsonSerializerSettings));
+    </script>
+
+    <script src="~/build/pool-account.js" asp-append-version="true"></script>
+}
+
+@section FooterExtra {
+    @if (Model.OtherPools?.Length > 0)
+    {
+        <div class="row d-none d-lg-flex pools">
+        @for (int i = 0; i < 3; i++)
+         {
+         <div class="col-lg-4">
+            <ul class="nav flex-column">
+            @foreach(var pool2 in Model.OtherPools.Skip(i * 2).Take(2))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Pool" asp-action="Details" asp-route-id="@pool2.Id">
+                        <img alt="@pool2.Coin.Type.ToUpper()" class="cointype footer" src="/img/coins/@(pool2.Coin.Type.ToLower()).png" /> @(pool2.Coin.CanonicalName ?? pool2.Coin.Name)@(FormatUtil.IsMultiAlgoCoin(pool2.Coin.Type) ? " (" + pool2.Coin.GetAlgorithmName() + ")" : "")
+                    </a>
+                </li>
+            }
+            </ul>
+         </div>
+         }
+        </div>
+    }
+}
+
+<div id="app">
+    <miner-dashboard></miner-dashboard>
+</div>

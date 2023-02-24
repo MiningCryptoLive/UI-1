@@ -1,0 +1,13 @@
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Mvc.Localization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@*Remove built-in TagHelpers that interfere with our overrides*@
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+@removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@addTagHelper "*, WebApp"
+
+@inject IWebHostEnvironment HostingEnvironment

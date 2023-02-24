@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Routing
+@using CommonMark
+@using WebApp.Resources
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/generic-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://vertcoin.org/download/" },
+    { "WalletRegex", "^V.+" },
+    //{ "IntroExtraMarkdown", CommonMarkConverter.Convert("**NOTE**: This pool is compatible with the February 2019 Hardfork") },
+})

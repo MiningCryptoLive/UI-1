@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Routing
+@using CommonMark
+@using WebApp.Resources
+
+@{var culture = ((string) Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/cryptonight-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "XmrigAlgo", "rx/0" },
+    { "XmrigVariant", "-1" },
+    { "WalletRegex", "^4" },
+    { "OfficialWalletUrl", "https://getmonero.org/downloads/" },
+    { "WalletExtraPartial", "Help/xmr-wallet-extra-" + culture },
+    //{ "IntroExtraMarkdown", CommonMarkConverter.Convert(Strings.XmrHardforkInfo) },
+})

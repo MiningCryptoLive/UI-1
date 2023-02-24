@@ -1,0 +1,49 @@
+<div class="setup-assistent">
+    <div class="form-group">
+        <label for="select-os">{{ $t('setupAssistant.selectOsPlaceholder') }}</label>
+
+        <select class="form-control form-control-sm" v-model="selectedOs" id="select-os">
+            <option v-for="option in operatingSystems" v-bind:value="option.value">{{ option.name }}</option>
+        </select>
+    </div>
+
+    <div class="form-group" v-if="selectedOs">
+        <label for="select-hw">{{ $t('setupAssistant.selectHardwarePlaceholder') }}</label>
+
+        <select class="form-control form-control-sm" v-model="selectedHardware" id="select-hw">
+            <option v-for="option in hardwarePlatforms" v-bind:value="option.value">{{ option.name }}</option>
+        </select>
+    </div>
+
+    <div class="form-group" v-if="selectedHardware">
+        <label for="select-wallet">{{ $t('setupAssistant.walletMonero') }}</label>
+
+        <input class="form-control form-control-sm" v-autofocus type="text" id="select-wallet" :placeholder="$t('myStats.watermarkWalletAddress')" v-custom-validity=isValidWallet v-model="wallet" />
+        <span class="help" v-html="$t('setupAssistant.walletHelp')"></span>
+        <br/>
+        <input class="form-control form-control-sm" type="text" :placeholder="$t('setupAssistant.watermarkPaymentId')" v-model="paymentId" />
+        <span class="help" v-html="$t('setupAssistant.walletMoneroPaymentIdHelp')"></span>
+    </div>
+
+    <div class="form-group" v-if="wallet && isValidWallet">
+        <label for="select-worker">{{ $t('setupAssistant.lblWorkerName') }}</label>
+
+        <input class="form-control form-control-sm" type="text" id="select-worker" :placeholder="$t('setupAssistant.watermarkWorkerName')" v-model="workerName" />
+        <span class="help" v-html="$t('setupAssistant.workerHelp')"></span>
+    </div>
+
+    <div class="form-group" v-if="isValidWallet && generatedConfig">
+        <label>{{ generatedConfigDesc }}</label>
+        <textarea id="generated" readonly rows="8" class="form-control form-control-sm">{{ generatedConfig }}</textarea>
+
+        <span class="setup-instructions" v-if="setupInstructions">{{ setupInstructions }}</span>
+
+        <div class="downloads">
+            <button class="btn btn-primary btn-sm" v-clipboard="{ action: 'copy', target: '#generated' }" >{{ $t('common.btnCopyClipboard') }}</button>
+
+            <a v-if="configDownloadBlobUrl && configDownloadFilename" class="btn btn-sm btn-success" :download=configDownloadFilename :href=configDownloadBlobUrl>{{ $t('setupAssistant.btnDownloadConfig') }}</a>
+
+            <a v-if=minerDownloadUrl class="btn btn-sm btn-success" :href=minerDownloadUrl>{{ $t('setupAssistant.btnDownloadMiner') }}</a>
+        </div>
+    </div>
+</div>

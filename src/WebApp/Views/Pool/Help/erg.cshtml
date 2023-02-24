@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Routing
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/autolykos-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://ergoplatform.org/" },
+    { "WalletRegex", "^9.+" },
+})

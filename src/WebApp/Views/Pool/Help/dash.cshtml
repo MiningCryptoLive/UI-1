@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Routing
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/generic-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://www.dash.org/wallets/" },
+    { "Antminer", "D3" },
+})

@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BlockHeight" xml:space="preserve">
+    <value>Current Block</value>
+  </data>
+  <data name="CookieWarning" xml:space="preserve">
+    <value>Cookies on this site help to enhance your user experience. By continuing to browse our website you are agreeing to how we use cookies. You can change your browser cookie settings at any time.</value>
+  </data>
+  <data name="GettingStarted" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="LastBlockTime" xml:space="preserve">
+    <value>Last Block</value>
+  </data>
+  <data name="MinPayout" xml:space="preserve">
+    <value>Minimum Payout</value>
+  </data>
+  <data name="NetworkDifficulty" xml:space="preserve">
+    <value>Network Difficulty</value>
+  </data>
+  <data name="PoolListNetworkHashrate" xml:space="preserve">
+    <value>Network Hashrate</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="OpenGraphAppDescription" xml:space="preserve">
+    <value>Crypto mining pools</value>
+  </data>
+  <data name="OpenGraphAppName" xml:space="preserve">
+    <value>My Miningpool</value>
+  </data>
+  <data name="OpenGraphAppTitle" xml:space="preserve">
+    <value>Crypto mining pools</value>
+  </data>
+  <data name="PayoutComission" xml:space="preserve">
+    <value>Payout commission</value>
+  </data>
+  <data name="PayoutScheme" xml:space="preserve">
+    <value>Earnings</value>
+  </data>
+  <data name="PoolFee" xml:space="preserve">
+    <value>Fee</value>
+  </data>
+  <data name="PoolHashrate" xml:space="preserve">
+    <value>Hashrate</value>
+  </data>
+  <data name="WelcomeH1Fmt" xml:space="preserve">
+    <value>Lorem Ipsum</value>
+  </data>
+  <data name="WelcomeH2_1" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</value>
+  </data>
+  <data name="WorkerCount" xml:space="preserve">
+    <value>Miners</value>
+  </data>
+  <data name="QuickstartLinux" xml:space="preserve">
+    <value>Linux Quickstart</value>
+  </data>
+  <data name="QuickstartWindows" xml:space="preserve">
+    <value>Windows Quickstart</value>
+  </data>
+  <data name="FaqRegistration" xml:space="preserve">
+    <value>Do I have to register somewhere to start mining?</value>
+  </data>
+  <data name="FaqRegistrationAnswer" xml:space="preserve">
+    <value>Registration is not required.  Just configure your miner according to our instructions and start mining. Your first submitted share will automatically register you with our pool. Good Luck!</value>
+  </data>
+  <data name="StratumPortAndDifficulty" xml:space="preserve">
+    <value>Difficulty/Port</value>
+  </data>
+  <data name="VarDiff" xml:space="preserve">
+    <value>Difficulty will be automatically adjusted according to your hash power</value>
+  </data>
+  <data name="Language_de" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="MiningPoolsHeader" xml:space="preserve">
+    <value>Our Mining Pools</value>
+  </data>
+  <data name="Quickstart" xml:space="preserve">
+    <value>Quickstart</value>
+  </data>
+  <data name="MinPayoutExchange" xml:space="preserve">
+    <value>Minimum Payout to Exchange</value>
+  </data>
+  <data name="PoolStats" xml:space="preserve">
+    <value>Pool Stats</value>
+  </data>
+  <data name="PoolHelp" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="PoolBlocks" xml:space="preserve">
+    <value>Blocks</value>
+  </data>
+  <data name="PoolPayments" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="MyStats" xml:space="preserve">
+    <value>Miner Stats</value>
+  </data>
+  <data name="FaqPayouts" xml:space="preserve">
+    <value>How will I get paid?</value>
+  </data>
+  <data name="StratumAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="StratumStartingDiff" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="FaqPayoutsAnswer" xml:space="preserve">
+    <value>All of our non-solo pools utilize the &lt;a href="https://bitcointalk.org/index.php?topic=39832"&gt;PPLNS&lt;/a&gt; payment system. &lt;a href="https://bitcointalk.org/index.php?topic=39832"&gt;PPLNS&lt;/a&gt; is short for "Pay Per Last N Shares". The image below illustrates the system. One round has an arbitrary number of shares which is solely based on sheer luck. Proportional reward systems only consider shares of one round when calculating rewards. PPLNS however, uses a quite constant number N of shares for calculating rewards. This number N changes only with the difficulty:
+
+&lt;p&gt;&lt;img src="/img/shares_round.png" alt="PPLNS" /&gt;&lt;/p&gt;
+
+As you know the number of shares needed to solve a block within a round is different. Round one and three needed *(difficulty * 2)* shares to be solved. Round two and four are quite short rounds. There were less than *(difficulty * 2)* shares necessary to solve them. Round five however is a very long round which means the pool needed more than *(difficulty * 2)* shares to solve the block. From this follows that:
+
+- Rounds one and three are like proportional rounds. All of your shares from the given round are considered for reward calculations
+- For rounds two and four, shares from the previous rounds are considered for calculations as well (marked green). In other words: regardless of round boundaries we always consider the last *(difficulty * 2)* shares. Your portion of the amount of shares is used to calculate your reward.
+- Round five however is very long. In this round your lowermost shares (within the marked red part) are silently dropped if they are not within the last *(difficulty * 2)* shares.
+
+**PPLNS favors constant and/or occasional loyal pool members over pool hoppers.** Pool hoppers are betting for a "quick win" (like round two above) with low shares per round. If the round exceeds a certain amount of shares they "hop" to another proportional pool which started a new round more recently. This assures better rewards for pool hoppers over occasional or constant miners which are loyal to their pool. Pool hopping however implies that pool hoppers need to know when a round is started and how much shares are considered for reward. This is very easy with proportional reward system. While using PPLNS, this is no longer true. On long rounds (like round five above) the pool hoppers shares won’t be considered for reward calculations in favor of loyal miners. This is due to the fact that pool hoppers only mine on the beginning of rounds. On short and normal rounds pool hoppers won’t lose their shares. Due to the fact that shares from previous rounds from loyal miners are considered **twice** (or even more often on extremely short rounds) the pool hopper won’t get the same reward as from proportional reward system.
+
+Assuming blocks have been found, payouts are processed and send every hour. This process is fully automated.</value>
+  </data>
+  <data name="FaqPerformance" xml:space="preserve">
+    <value>You keep talking about performance and reliability. What makes you think you are special?</value>
+  </data>
+  <data name="FaqPerformanceAnswer" xml:space="preserve">
+    <value>Unlike many other mining pools running on shared VPCs from the cheapest provider which often suffer from "bad neighbor" induced latency and performance drops, our pools run on dedicated hardware (Dual Hex-Core Xeons, 128 GB RAM) which are connected to the Internet using multiple high-bandwidth peerings guaranteeing low latency and stability.</value>
+  </data>
+  <data name="FaqHashrate" xml:space="preserve">
+    <value>Why is my reported hashrate zero or different from what my miner reports?</value>
+  </data>
+  <data name="FaqHashrateAnswer" xml:space="preserve">
+    <value>Pool and miner hashrates are re-calculated every ten minutes. Therefore it can take a maximum of ten minutes for your hashrate to update depending on the submission time of your first valid share. The hashrate we display at the pool is a rough approximation of your hashrate based on your submitted shares and can therefore differ significantly from the hashrate displayed locally. When in doubt always consider the value displayed by your miner as the correct one.</value>
+  </data>
+  <data name="OpenGraphAppDescription_Pool" xml:space="preserve">
+    <value>{0} | Fee {2}% PPLNS</value>
+  </data>
+  <data name="PoolWallet" xml:space="preserve">
+    <value>Pool Wallet</value>
+  </data>
+  <data name="FaqPayouts2" xml:space="preserve">
+    <value>When will I get paid?</value>
+  </data>
+  <data name="FaqPayouts2Answer" xml:space="preserve">
+    <value>You won't see any balance in your account until a block has been found by the pool and after the block has reached a mature status. This may take a couple hours, depending on the coin. As soon as a block can be considered 'mature' by the pool, your shares will be used to calculate your contribution towards finding the block. The more you've contributed, the higher your cut of the block reward will be. Your cut of the block reward will then be credited to your pending balance. If your balance reaches or exceeds the pool's minimum payout amount, the pool will transfer your &lt;b&gt;entire&lt;/b&gt; balance to your wallet and &lt;b&gt;reset&lt;/b&gt; your pending balance to zero. The minimum payout for each pool is listed in its 'Pool Stats' area.
+
+We are a small pool for the time being, and as such it may take some time to find a block. On larger pools you would see some balance earlier because they will find blocks faster, but you will get a smaller share of the reward than what you would in a smaller pool. Over time you will earn more or less the same amount when mining on a large pool or on a small one.
+
+In other words, the rewards you get on average are exactly proportional to your part in the total work done by the pool. If you mine in a pool **twice as large**, the pool will collect twice as much rewards but your share in them will be **cut by half**, meaning you get the same on average.
+
+Trustworthiness, reliability, support and low latency are the things you should consider when choosing a pool. By avoiding the largest pools you contribute to the network health by spreading the hash power.</value>
+  </data>
+  <data name="MinerPayments" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="MinerWorkers" xml:space="preserve">
+    <value>Workers</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="GoWalletButtonCaption" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="WatermarkWalletAddress" xml:space="preserve">
+    <value>Enter wallet address</value>
+  </data>
+  <data name="PoolMiners" xml:space="preserve">
+    <value>Top Miners (24h)</value>
+  </data>
+  <data name="NewbieSetup" xml:space="preserve">
+    <value>Newbie Setup</value>
+  </data>
+  <data name="StratumLogin" xml:space="preserve">
+    <value>**LOGIN:** Login using your wallet address as username. An optional workername can be appended to your address separated by a dot (.) character. Password can be left blank.</value>
+  </data>
+  <data name="StratumPorts" xml:space="preserve">
+    <value>Stratum Configuration</value>
+  </data>
+  <data name="EthStratumInstructions" xml:space="preserve">
+    <value>&lt;b&gt;Stratum Protocol Configuration&lt;/b&gt;
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;Claymore Miner: Add the &lt;code&gt;-esm 3&lt;/code&gt; command line switch&lt;/li&gt;
+&lt;li&gt;Ethminer/Genoil: Add the &lt;code&gt;-SP 2&lt;/code&gt; command line switch&lt;/li&gt;
+&lt;/ul&gt;</value>
+  </data>
+  <data name="XmrExchangeInstructions" xml:space="preserve">
+    <value>To mine directly to an exchange you need append your paymentId to your address separated by a hash sign.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Example: &lt;/b&gt;&lt;code&gt;&amp;lt;WALLET ADDRESS&amp;gt;&lt;/code&gt;#&lt;code&gt;&amp;lt;PAYMENT_ID&amp;gt;&lt;/code&gt;.&lt;code&gt;&amp;lt;WORKER&amp;gt;&lt;/code&gt;</value>
+  </data>
+  <data name="PoolBlockEffort" xml:space="preserve">
+    <value>Block Effort</value>
+  </data>
+  <data name="PoolBlockEffortTooltip" xml:space="preserve">
+    <value>Average effort over last 15 blocks</value>
+  </data>
+  <data name="MinerEarnings" xml:space="preserve">
+    <value>Miner Earnings</value>
+  </data>
+  <data name="MinerEarnings2" xml:space="preserve">
+    <value>Miner Earnings</value>
+  </data>
+  <data name="MinerEarningsTooltip" xml:space="preserve">
+    <value>Total earnings of all miners over the pool's lifetime</value>
+  </data>
+  <data name="PowAlgo" xml:space="preserve">
+    <value>Algorithm</value>
+  </data>
+  <data name="SetupGeneratorHelp" xml:space="preserve">
+    <value>&lt;b&gt;Note:&lt;/b&gt; Using the @Strings.SetupGenerator is highly recommended if you are new to crypto mining</value>
+  </data>
+  <data name="PoolListAlgo" xml:space="preserve">
+    <value>Algorithm</value>
+  </data>
+  <data name="PoolListCoin" xml:space="preserve">
+    <value>Coin</value>
+  </data>
+  <data name="PoolListMineButton" xml:space="preserve">
+    <value>Mine</value>
+  </data>
+  <data name="StratumNicehash" xml:space="preserve">
+    <value>&lt;b&gt;Nicehash&lt;/b&gt;: Nicehash is supported on all ports.</value>
+  </data>
+  <data name="PoolListMiners" xml:space="preserve">
+    <value>Miners</value>
+  </data>
+  <data name="PoolListPaymentScheme" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="PoolListPoolHashrate" xml:space="preserve">
+    <value>Pool Hashrate</value>
+  </data>
+  <data name="PoolListFee" xml:space="preserve">
+    <value>Fee</value>
+  </data>
+  <data name="FaqAPI" xml:space="preserve">
+    <value>Do you provide an API?</value>
+  </data>
+  <data name="FaqAPIAnswer" xml:space="preserve">
+    <value>[Yes, of course.](/api)</value>
+  </data>
+  <data name="StratumStaticDifficulty" xml:space="preserve">
+    <value>**Static difficulty**: To mine with a static (fixed) difficulty simply use &lt;code&gt;d=xxx&lt;/code&gt; as password where &lt;code&gt;xxx&lt;/code&gt; is your preferred difficulty.</value>
+  </data>
+  <data name="QuoteDown24h" xml:space="preserve">
+    <value>Down from previous day</value>
+  </data>
+  <data name="QuoteUp24h" xml:space="preserve">
+    <value>Up from previous day</value>
+  </data>
+  <data name="RollingVersionAsicBoost" xml:space="preserve">
+    <value>**ASIC BOOST**: This pool fully supports [Version-Rolling ASIC Boost](https://halongmining.com/blog/2018/03/07/dragonmint-btc-miner-uses-version-rolling-asicboost/) - also known as Overt ASIC Boost. This feature is supported on Halong Mining's DragonMint T1 and hardware based on Bitmain's BM1380 chip such as Antminer S9, R4, S9i, S9j, T9 and T9+.</value>
+  </data>
+    <data name="StratumFeatures" xml:space="preserve">
+    <value>&lt;b&gt;SSL:&lt;/b&gt; All ports support both SSL and non-SSL connections without any extra configuration (auto-sensing).</value>
+  </data>
+  <data name="BCH_2020_Hardfork" xml:space="preserve">
+    <value>**NOTE:** November 15th, 2020 BCHA fork</value>
+  </data>
+  <data name="XmrHardforkInfo" xml:space="preserve">
+    <value>This pool is compatible with the Monero RandomX November 2019 hard fork</value>
+  </data>
+  <data name="PoolPending1" xml:space="preserve">
+    <value>&lt;span class="text-danger"&gt;**IMPORTANT**:&lt;/span&gt; This pool is **not** yet active. It will be fully enabled around June 21, 2019.</value>
+  </data>
+  <data name="OpenGraphAppDescription_Pool_Paid" xml:space="preserve">
+    <value>{0} | Fee {2}% PPLNS, Paid {3} {4}</value>
+  </data>
+  <data name="PoolPending2" xml:space="preserve">
+    <value>&lt;span class="text-danger"&gt;**IMPORTANT**:&lt;/span&gt; The SUQA hardfork that will result in a rebranding of the SUQA project to Sinovate (SIN) has been delayed to block 170000, which will occur around June 1st, 2019.  In the meantime, you may use this pool to validate your X25x mining setup, just be aware that we **won't be able to hit/pay any blocks until the hardfork**.
+</value>
+  </data>
+  <data name="PersonalStats" xml:space="preserve">
+    <value>To open your personal mining dashboard, click the **_Miner Stats_** tab to the right of this page, enter the wallet address you are mining with and click **_Load_**.</value>
+  </data>
+  <data name="PostHardforkNote" xml:space="preserve">
+    <value>&lt;span class="text-success"&gt;**NOTE**:&lt;/span&gt; Hardfork activated at block {0}. Happy mining!</value>
+  </data>
+  <data name="Hashrate" xml:space="preserve">
+    <value>Hashrate</value>
+  </data>
+  <data name="NetworkHashrate" xml:space="preserve">
+    <value>Network Hashrate</value>
+  </data>
+  <data name="SetupGenerator" xml:space="preserve">
+    <value>How to Start</value>
+  </data>
+  <data name="Language_ru" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Language_en" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="MiningPool" xml:space="preserve">
+    <value>Mining Pool</value>
+  </data>
+  <data name="MiningPoolShort" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="Topics" xml:space="preserve">
+    <value>Topics</value>
+  </data>
+  <data name="Billion" xml:space="preserve">
+    <value>Billion</value>
+  </data>
+  <data name="Million" xml:space="preserve">
+    <value>Million</value>
+  </data>
+  <data name="Quadrillion" xml:space="preserve">
+    <value>Quadrillion</value>
+  </data>
+  <data name="Quintillion" xml:space="preserve">
+    <value>Quintillion</value>
+  </data>
+  <data name="Trillion" xml:space="preserve">
+    <value>Trillion</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>Light Mode</value>
+  </data>
+  <data name="FaqSoloMining" xml:space="preserve">
+    <value>Solo Mining</value>
+  </data>
+  <data name="FaqSoloMiningAnswer" xml:space="preserve">
+    <value>With Solo-Mining all miners compete with each other for the current block. The miner submitting the share with a difficulty representing the block, will receive the entire block-reward minus the negligible pool fee.
+</value>
+  </data>
+  <data name="MiningPoolShortDetails" xml:space="preserve">
+    <value>Pool</value>
+  </data>
+  <data name="SoloPool" xml:space="preserve">
+    <value>Solo</value>
+  </data>
+  <data name="MinerStats" xml:space="preserve">
+    <value>Miner Stats</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Language_zh" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="Language_fr" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="Language_es" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="Language_pt" xml:space="preserve">
+    <value>Português</value>
+  </data>
+  <data name="Language_tr" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="Language_vi" xml:space="preserve">
+    <value>TiếngViệt</value>
+  </data>
+  <data name="Language_it" xml:space="preserve">
+    <value>Italiano</value>
+  </data>
+  <data name="Language_th" xml:space="preserve">
+    <value>ไทย</value>
+  </data>
+  <data name="Language_hi" xml:space="preserve">
+    <value>हिंदी</value>
+  </data>
+  <data name="Language_ko" xml:space="preserve">
+    <value>한국어</value>
+  </data>
+  <data name="Language_ja" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+</root>

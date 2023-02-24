@@ -1,0 +1,33 @@
+﻿<div class="hardfork-countdown" v-if="currentHeightActual < forkHeight + 100">
+	<div class="card">
+		<div class="card-header"><i class="fa-code-fork"></i> {{ $t('common.lblHardfork') }}</div>
+		<div class="card-body">
+			<div v-if="currentHeightActual < forkHeight">
+				<table>
+					<tr style="vertical-align: top">
+						<td v-if="currentHeightActual >= (forkHeight - countdownDeltaActual)">
+							<div class="hardfork-progress">
+								<p v-if="blockTimeSeconds" class="remaining" :title="$t('common.lblHardforkRemainingTimeTooltip')" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{ timeRemaining }}</p>
+
+								<div :class="['c100', 'p' + Math.ceil(forkProgress * 100)]" :title="progressTooltip" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">
+									<span>{{forkProgress | percent}}</span>
+									<div class="slice">
+										<div class="bar"></div>
+										<div class="fill"></div>
+									</div>
+								</div>
+
+								<p class="progress-note">{{ progressTooltip }}</p>
+							</div>
+						</td>
+						<td>
+							<div v-html="preForkNote"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div v-if="currentHeightActual >= forkHeight && (currentHeightActual - forkHeight) < 100" v-html="postForkNote"></div>
+		</div>
+	</div>
+</div>

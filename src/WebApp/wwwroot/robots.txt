@@ -1,0 +1,55 @@
+User-agent: *
+Disallow: /account
+
+User-agent: Googlebot
+User-agent: Googlebot-News
+User-agent: Googlebot-Video
+User-agent: Googlebot-Image
+User-agent: Mediapartners-Google
+User-agent: AdsBot-Google
+User-agent: AdsBot-Google-Mobile-Apps
+User-agent: Bingbot
+User-agent: MSNBot
+User-agent: MSNBot-Media
+User-agent: AdIdxBot
+User-agent: BingPreview
+User-agent: Desktop
+User-agent: Mobile
+User-agent: Business Search (Advertisements)
+User-agent: Baidu Union
+User-agent: Baidu Favorites
+User-agent: Image Search
+User-agent: News Search
+User-agent: Video Search
+User-agent: YandexBot
+User-agent: YandexMobileBot
+User-agent: Yandex
+User-agent: YandexDirect
+User-agent: YandexDirectDyn
+User-agent: YandexMedia
+User-agent: YandexImages
+User-agent: YaDirectFetcher
+User-agent: YandexBlogs
+User-agent: YandexNews
+User-agent: YandexPagechecker
+User-agent: YandexMetrika
+User-agent: YandexCalendar
+User-agent: YandexScreenshotBot
+User-agent: YandexFavicons
+User-agent: YandexWebmaster
+User-agent: YandexImageResizer
+User-agent: YandexSitelinks
+User-agent: YandexAntivirus
+User-agent: YandexVertis
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: ia_archiver
+User-agent: aolbuild
+User-agent: teoma
+User-agent: PetalBot
+User-agent: 360Spider
+User-agent: Yisouspider
+User-agent: Bytespider
+User-agent: ZoominfoBot
+Disallow: /api/
+Disallow: /notifications

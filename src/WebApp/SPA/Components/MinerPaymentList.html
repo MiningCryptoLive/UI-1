@@ -1,0 +1,34 @@
+﻿<div>
+    <table class="table pool-payments table-striped">
+        <thead>
+            <tr>
+                <th class="timestamp">{{ $t('common.lblSent') }}</th>
+                <th class="amount">{{ $t('common.lblAmount') }} ({{ currency }})</th>
+                <th class="hash">{{ $t('common.lblTransaction') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in payments">
+                <td class="timestamp" :title=item.created.local() v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}">{{item.created | momentAgo}}</td>
+                <td class="amount">{{item.amount | currency(4)}}</td>
+                <td class="hash" :title="item.transactionConfirmationData" v-bs-tooltip="{ placement: 'bottom', delay: { show: 300 }}"><a target="_blank"
+                    :href="item.transactionInfoLink">{{item.transactionConfirmationData}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div v-if="isBusy" class="spinner-container flex-items-xs-middle">
+        <div class="col-sm-12">
+            <spinner title="Loading ..."></spinner>
+        </div>
+    </div>
+
+    <div v-if="!payments.length" class="text-xs-center">
+        <h2 class="no-data">No Results</h2>
+    </div>
+
+    <div v-if="pageCount > 1 && (currentPage > 0 || payments.length > 0)" class="mini-pager">
+        <button class="btn btn-sm btn-outline-primary" @click="onPagePrev" :disabled="currentPage === 0"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="btn btn-sm btn-outline-primary" @click="onPageNext" :disabled="currentPage === pageCount"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+</div>

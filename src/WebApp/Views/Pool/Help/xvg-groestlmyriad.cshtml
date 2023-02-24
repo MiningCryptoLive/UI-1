@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Routing
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/generic-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://vergecurrency.com/wallets/" },
+    { "CCMinerAlgo", "groestl" },
+    { "WalletRegex", "^D.+" },
+    { "Coinname", "Verge" },
+})

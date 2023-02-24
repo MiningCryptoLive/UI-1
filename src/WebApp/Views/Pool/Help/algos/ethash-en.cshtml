@@ -1,0 +1,109 @@
+﻿@using WebApp.Resources
+@using Microsoft.Extensions.Options
+@using WebApp
+@using CommonMark
+@using Microsoft.AspNetCore.Routing
+@inject IOptions<AppConfig> appConfig
+@model WebApp.Models.PoolDetailsModel
+
+@{
+    var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en";
+    var defaultPortConfig = Model.Pool.Ports.Values.FirstOrDefault(x => x.VarDiff != null) ?? Model.Pool.Ports.Values.First();
+    var defaultPort = Model.Pool.Ports.Keys.First(x => Model.Pool.Ports[x] == defaultPortConfig);
+    var coinName = Model.Pool.Coin.Name;
+    var coinSymbol = Model.Pool.Coin.Type.ToLower();
+    var walletRegex = (string) ViewData["WalletRegex"];
+    var officialWalletUrl = (string) ViewData["OfficialWalletUrl"];
+    var walletExtraPartial = (string) ViewData["WalletExtraPartial"];
+    var introExtraMarkdown = (string) ViewData["IntroExtraMarkdown"];
+    var introExtraPartial = (string) ViewData["IntroExtraPartial"];
+    var introExtraMaxChainHeight = (ulong?) ViewData["IntroExtraMaxChainHeight"];
+    var hardforkHeight = (ulong?) ViewData["HardforkHeight"];
+    var hardforkBlockTimeSeconds = ((int?) ViewData["HardforkBlockTimeSeconds"]) ?? 0;
+    var hardforkNoteMarkdown = (string) ViewData["HardforkNoteMarkdown"];
+}
+
+@if (!introExtraMaxChainHeight.HasValue || introExtraMaxChainHeight >= (ulong) Model.Pool.NetworkStats.BlockHeight)
+{
+    if (!string.IsNullOrEmpty(introExtraMarkdown))
+    {
+    <p>@Html.Raw(CommonMarkConverter.Convert(introExtraMarkdown))</p>
+    }
+
+    else if (!string.IsNullOrEmpty(introExtraPartial))
+    {
+        @await Html.PartialAsync(introExtraPartial, Model, null)
+    }
+}
+
+@if (hardforkHeight.HasValue && Model.Pool.NetworkStats.BlockHeight < (long) (hardforkHeight  + 1000))
+{
+    <hardfork-countdown pool="@Model.PoolId"
+        pre-fork-note="@CommonMarkConverter.Convert(hardforkNoteMarkdown)"
+        post-fork-note="@CommonMarkConverter.Convert(string.Format(Strings.PostHardforkNote, hardforkHeight.Value))"
+        :fork-height=@hardforkHeight :current-height=@Model.Pool.NetworkStats.BlockHeight
+        :block-time-seconds=@hardforkBlockTimeSeconds></hardfork-countdown>
+}
+
+@await Html.PartialAsync("Help/stratums", Model, null)
+
+<div id="assistant">
+<markdown>
+### <i class="fa fa-plug" aria-hidden="true"></i> @Strings.SetupGenerator <span class="nvidia">Nvidia</span> <span class="amd">AMD</span>
+</markdown>
+<ethash-assistant host="pool.@appConfig.Value.PoolDomain" wallet-regex="@walletRegex"></ethash-assistant>
+</div>
+
+<div id="nvidia-mining-windows">
+<markdown>
+### <i class="fa fa-windows" aria-hidden="true"></i> Mining on Windows <span class="nvidia">Nvidia</span>
+
+- Download [ethminer for Windows](@(appConfig.Value.Miners.EthminerWindows))
+- Extract the archive and run the command below, replacing <code>YOUR_WALLET_ADDRESS</code> with your @(coinName) address. If you don't know your address, read [this section](#wallet-setup) first.
+- If you are mining on multiple machines/rigs, you can append an identifier of your choice to your wallet address seperated by a dot, to receive per-rig performance metrics on your dashboard. Example: <code>&lt;WALLET ADDRESS&gt;</code>.<code>&lt;WORKERNAME&gt;</code>
+</markdown>
+<div class="code self-click-copy">
+ethminer.exe -U stratum2+tcp://YOUR_WALLET_ADDRESS@@@appConfig.Value.PoolDomain:@defaultPort
+</div>
+</div>
+
+<div id="amd-mining-windows">
+<markdown>
+### <i class="fa fa-windows" aria-hidden="true"></i> Mining on Windows <span class="amd">AMD</span>
+
+- Download [ethminer for Windows](@(appConfig.Value.Miners.EthminerWindows))
+- Extract the archive and run the command below, replacing <code>YOUR_WALLET_ADDRESS</code> with your @(coinName) address. If you don't know your address, read [this section](#wallet-setup) first.
+- If you are mining on multiple machines/rigs, you can append an identifier of your choice to your wallet address seperated by a dot, to receive per-rig performance metrics on your dashboard. Example: <code>&lt;WALLET ADDRESS&gt;</code>.<code>&lt;WORKERNAME&gt;</code>
+</markdown>
+<div class="code self-click-copy">
+ethminer.exe -G stratum2+tcp://YOUR_WALLET_ADDRESS@@@appConfig.Value.PoolDomain:@defaultPort
+</div>
+</div>
+
+<div id="nvidia-mining-linux">
+<markdown>
+### <i class="fa fa-linux" aria-hidden="true"></i> Mining on Linux <span class="nvidia">Nvidia</span>
+
+- Download [ethminer for Linux](@(appConfig.Value.Miners.EthminerLinux))
+- Extract the archive and run the command below, replacing <code>YOUR_WALLET_ADDRESS</code> with your @(coinName) address. If you don't know your address, read [this section](#wallet-setup) first.
+- If you are mining on multiple machines/rigs, you can append an identifier of your choice to your wallet address seperated by a dot, to receive per-rig performance metrics on your dashboard. Example: <code>&lt;WALLET ADDRESS&gt;</code>.<code>&lt;WORKERNAME&gt;</code>
+</markdown>
+<div class="code self-click-copy">
+./ethminer -U stratum2+tcp://YOUR_WALLET_ADDRESS@@@appConfig.Value.PoolDomain:@defaultPort
+</div>
+</div>
+
+<div id="amd-mining-linux">
+<markdown>
+### <i class="fa fa-linux" aria-hidden="true"></i> Mining on Linux <span class="amd">AMD</span>
+
+- Download [ethminer for Linux](@(appConfig.Value.Miners.EthminerLinux))
+- Extract the archive and run the command below, replacing <code>YOUR_WALLET_ADDRESS</code> with your @(coinName) address. If you don't know your address, read [this section](#wallet-setup) first.
+- If you are mining on multiple machines/rigs, you can append an identifier of your choice to your wallet address seperated by a dot, to receive per-rig performance metrics on your dashboard. Example: <code>&lt;WALLET ADDRESS&gt;</code>.<code>&lt;WORKERNAME&gt;</code>
+</markdown>
+<div class="code self-click-copy">
+./ethminer -G stratum2+tcp://YOUR_WALLET_ADDRESS@@@appConfig.Value.PoolDomain:@defaultPort
+</div>
+</div>
+
+@await Html.PartialAsync("Help/algos/_wallet-base-" + culture)

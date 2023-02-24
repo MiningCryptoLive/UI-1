@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Routing
+@using CommonMark
+@using WebApp.Resources
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/generic-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://www.digibyte.co/digibyte-wallet-downloads" },
+    { "Coinname", "Digibyte" },
+    { "Antminer", "S19" },
+    { "AntminerImage", "antminer_dgb_sha.jpg" },
+    { "ExtraContent", CommonMarkConverter.Convert(Strings.RollingVersionAsicBoost) },
+})

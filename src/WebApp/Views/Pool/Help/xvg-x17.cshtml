@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Routing
+@using Microsoft.AspNetCore.Mvc.ViewEngines
+@inject ICompositeViewEngine viewEngine
+
+@{
+    var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en";
+    var partialName = "Help/algos/generic-" + culture;
+
+    if (!viewEngine.FindView(ViewContext, partialName, isMainPage: false).Success)
+        partialName = "Help/algos/generic-en";
+}
+
+
+@await Html.PartialAsync(partialName, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://vergecurrency.com/wallets/" },
+    { "CCMinerAlgo", "x17" },
+    { "WalletRegex", "^D.+" },
+    { "Coinname", "Verge" },
+})

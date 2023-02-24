@@ -1,0 +1,6 @@
+
+[*]
+
+# ReSharper properties
+resharper_continuous_indent_multiplier = 0
+resharper_use_continuous_indent_inside_initializer_braces = false

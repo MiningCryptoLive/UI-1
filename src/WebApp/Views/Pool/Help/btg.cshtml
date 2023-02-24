@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Routing
+
+@{var culture = ((string)Context.GetRouteData().Values["culture"])?.ToLower() ?? "en"; }
+
+@await Html.PartialAsync("Help/algos/equihash-personalized-" + culture, Model, new ViewDataDictionary(ViewData)
+{
+    { "OfficialWalletUrl", "https://bitcoingold.org/electrumg/" },
+    { "EwbfAlgo", "144_5" },
+    { "EwbfPersonalization", "BgoldPoW" },
+    { "WalletRegex", "^G.+" },
+})
