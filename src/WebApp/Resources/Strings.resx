@@ -142,10 +142,10 @@
     <value>None</value>
   </data>
   <data name="OpenGraphAppDescription" xml:space="preserve">
-    <value>Crypto mining pools</value>
+    <value>ETC-SOLO.COM</value>
   </data>
   <data name="OpenGraphAppName" xml:space="preserve">
-    <value>My Miningpool</value>
+    <value>ETC-SOLO.COM</value>
   </data>
   <data name="OpenGraphAppTitle" xml:space="preserve">
     <value>Crypto mining pools</value>
@@ -163,10 +163,10 @@
     <value>Hashrate</value>
   </data>
   <data name="WelcomeH1Fmt" xml:space="preserve">
-    <value>Lorem Ipsum</value>
+    <value>Welcome Solo Miner's</value>
   </data>
   <data name="WelcomeH2_1" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</value>
+    <value>High Performance Solo Mining Pools</value>
   </data>
   <data name="WorkerCount" xml:space="preserve">
     <value>Miners</value>
