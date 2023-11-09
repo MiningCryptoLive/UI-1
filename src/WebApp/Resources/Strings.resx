@@ -142,13 +142,13 @@
     <value>None</value>
   </data>
   <data name="OpenGraphAppDescription" xml:space="preserve">
-    <value>ETC-SOLO.COM</value>
+    <value>SOLOPOOL.PRO</value>
   </data>
   <data name="OpenGraphAppName" xml:space="preserve">
-    <value>ETC-SOLO.COM</value>
+    <value>SOLOPOOL.PRO</value>
   </data>
   <data name="OpenGraphAppTitle" xml:space="preserve">
-    <value>Crypto mining pools</value>
+    <value>Solo MiningPools</value>
   </data>
   <data name="PayoutComission" xml:space="preserve">
     <value>Payout commission</value>
@@ -160,7 +160,7 @@
     <value>Fee</value>
   </data>
   <data name="PoolHashrate" xml:space="preserve">
-    <value>Hashrate</value>
+    <value>Pool Hashrate</value>
   </data>
   <data name="WelcomeH1Fmt" xml:space="preserve">
     <value>Welcome Solo Miner's</value>
@@ -187,7 +187,7 @@
     <value>Difficulty/Port</value>
   </data>
   <data name="VarDiff" xml:space="preserve">
-    <value>Difficulty will be automatically adjusted according to your hash power</value>
+    <value>Difficulty will be automatically adjusted according to your hash power. Our pools use VarDiff on all ports.</value>
   </data>
   <data name="Language_de" xml:space="preserve">
     <value>Deutsch</value>
@@ -208,7 +208,7 @@
     <value>Getting started</value>
   </data>
   <data name="PoolBlocks" xml:space="preserve">
-    <value>Blocks</value>
+    <value>Pool Blocks</value>
   </data>
   <data name="PoolPayments" xml:space="preserve">
     <value>Payments</value>
