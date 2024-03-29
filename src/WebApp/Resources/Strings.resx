@@ -127,7 +127,7 @@
     <value>Getting started</value>
   </data>
   <data name="LastBlockTime" xml:space="preserve">
-    <value>Last Block</value>
+    <value>Last Block Found</value>
   </data>
   <data name="MinPayout" xml:space="preserve">
     <value>Minimum Payout</value>
@@ -142,10 +142,10 @@
     <value>None</value>
   </data>
   <data name="OpenGraphAppDescription" xml:space="preserve">
-    <value>SOLOPOOL.PRO</value>
+    <value>ETC SOLO MINING</value>
   </data>
   <data name="OpenGraphAppName" xml:space="preserve">
-    <value>SOLOPOOL.PRO</value>
+    <value>SOLOPOOL.US</value>
   </data>
   <data name="OpenGraphAppTitle" xml:space="preserve">
     <value>Solo MiningPools</value>
@@ -157,13 +157,13 @@
     <value>Earnings</value>
   </data>
   <data name="PoolFee" xml:space="preserve">
-    <value>Fee</value>
+    <value>Pool Fee</value>
   </data>
   <data name="PoolHashrate" xml:space="preserve">
     <value>Pool Hashrate</value>
   </data>
   <data name="WelcomeH1Fmt" xml:space="preserve">
-    <value>Welcome Solo Miner's</value>
+    <value>Welcome ETC Solo Miner's</value>
   </data>
   <data name="WelcomeH2_1" xml:space="preserve">
     <value>High Performance Solo Mining Pools</value>
